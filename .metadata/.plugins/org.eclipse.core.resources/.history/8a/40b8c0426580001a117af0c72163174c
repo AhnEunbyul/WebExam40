@@ -1,0 +1,25 @@
+package sample.action.qa;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import sample.action.Action;
+import sample.model.qa.qaDAO;
+
+public class qaIndexAction implements Action {
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		qaDAO dao = qaDAO.getInstance();
+		
+		
+		
+		RequestDispatcher dispater = request.getRequestDispatcher("qa/qa.jsp");
+		dispater.forward(request, response);
+	}
+
+}

@@ -1,0 +1,12 @@
+package sample.model.ui;
+
+import java.sql.PreparedStatement;
+
+public class uiDAO {
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	private uiDAO() {}
+	
+}

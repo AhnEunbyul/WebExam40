@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>학생정보입력</title>
+</head>
+<body>
+	<table border = 1 width = 400 align = center>
+		<tr>
+			<th colspan = 2>학생정보등록</th>
+		</tr>
+		<tr>
+			<th>학번</th>
+			<td><input type = "text" size = 15 name = hakbun></td>
+		</tr>
+		<tr>
+			<th>이름</th>
+			<td><input type = "text" size = 20 name = name></td>
+		</tr>
+		<tr>
+			<th>성별</th>
+			<td>
+				<input type = radio name = gender value = "M">남자
+				<input type = radio name = gender value = "F" checked>여자
+				<!-- radio는 무조건 둘 중 하나 선택일 확률이 크기 때문에 name을 똑같이 지정 -->
+			</td>
+		</tr>
+		<tr>
+			<th>직업</th>
+			<td>
+				<select name = job>
+					<option>직업선택</option>
+					<option value = 학생>학생</option>
+					<option value = 교사>교사</option>
+					<option value = 무직>무직</option>
+					<!-- value는 값을 정해주는 것! -->
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th>취미</th>
+			<td>
+				<input type = "checkbox" name = fav value = 낚시>낚시
+				<input type = "checkbox" name = fav value = 여행>여행
+				<input type = "checkbox" name = fav value = 음악>음악
+				<input type = "checkbox" name = fav value = 게임>게임
+				<input type = "checkbox" name = fav value = 영화>영화
+			</td>
+		</tr>
+		<tr>
+			<td colspan = 2 align = center>
+				<input type = "button" value = "등록">
+				<input type = "button" value = "취소">
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

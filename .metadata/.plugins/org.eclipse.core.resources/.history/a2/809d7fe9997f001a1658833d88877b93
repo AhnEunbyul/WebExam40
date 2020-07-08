@@ -1,0 +1,25 @@
+package sample.action.ui;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import sample.action.Action;
+import sample.model.ui.uiDAO;
+
+public class uiIndexAction implements Action {
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		uiDAO dao = uiDAO.getInstance();
+		
+		
+		
+		RequestDispatcher dispater = request.getRequestDispatcher("ui/ui.jsp");
+		dispater.forward(request, response);
+	}
+
+}

@@ -1,0 +1,36 @@
+package sample.action.port;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import sample.action.Action;
+import sample.model.port.portDAO;
+
+public class portWebSearchAction implements Action {
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		portDAO dao = portDAO.getInstance();
+		
+		int cnt = dao.portCount();
+		
+		request.setAttribute("total", cnt); // cnt를 jsp에서 부를땐 total
+		
+		request.setCharacterEncoding("UTF-8");
+		
+		String s_query = "", addtag = "", query = "", key = "";
+		
+		int totcount = 0;
+		
+		if(request.getParameter("key") != null) {
+			key = request.getParameter("key");
+			query = request.getParameter("sel");
+			s_query = query + " like '%" + key + "%'";
+			
+		}
+	}
+
+}

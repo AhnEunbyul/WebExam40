@@ -1,0 +1,182 @@
+package sample.model.ui;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import sample.util.DBManager;
+
+public class uiDAO {
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	private uiDAO() {}
+	private static uiDAO instance = new uiDAO();
+	
+	public static uiDAO getInstance() {
+		return instance;
+	}
+	
+	// 전체 자료 검색
+	public List<uiVO> ui_list(){
+		String sql = "SELECT * FROM UI ORDER BY IDX DESC";
+			
+		List<uiVO> list = new ArrayList<uiVO>();
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			uiVO vo = null;
+			
+			while(rs.next()) {
+				vo = new uiVO();
+				
+				vo.setIdx(rs.getInt("idx"));
+				vo.setMgn_name(rs.getString("mgn_name"));
+				vo.setSubject(rs.getString("subject"));
+				vo.setContents(rs.getString("contents"));
+				vo.setRegdate(rs.getString("regdate"));
+				vo.setReadcnt(rs.getInt("readcnt"));
+				vo.setFilename(rs.getString("filename"));
+					
+				list.add(vo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				DBManager.close(conn, pstmt, rs);
+			} catch (Exception e2) {}
+		}
+		return list;
+	}
+	
+	// 글 등록하기
+	public int ui_write(uiVO vo) {
+		String sql = "INSERT INTO UI(IDX,MGN_NAME,SUBJECT,CONTENTS,REGDATE,READCNT,FILENAME,PWD)"
+				+ " VALUES(UI_SEQ_IDX.NEXTVAL,?,?,?,SYSDATE,?,?,?)";
+		
+		int row = 0;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getMgn_name());
+			pstmt.setString(2, vo.getSubject());
+			pstmt.setString(3, vo.getContents());
+			pstmt.setInt(4, vo.getReadcnt());
+			pstmt.setString(5, vo.getFilename());
+			pstmt.setString(6, vo.getPwd());
+			
+			row = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				DBManager.close(conn, pstmt, rs);
+			} catch (Exception e2) {}
+		}
+		return row;
+	}
+	
+	// idx에 맞는 글 가져오기
+	public uiVO ui_select(int idx) {
+		String sql = "SELECT * FROM UI WHERE IDX=?";
+		
+		uiVO vo = new uiVO();
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				vo.setIdx(rs.getInt("idx"));
+				vo.setMgn_name(rs.getString("mgn_name"));
+				vo.setSubject(rs.getString("subject"));
+				vo.setContents(rs.getString("contents"));
+				vo.setRegdate(rs.getString("regdate"));
+				vo.setReadcnt(rs.getInt("readcnt"));
+				vo.setFilename(rs.getString("filename"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				DBManager.close(conn, pstmt, rs);
+			} catch (Exception e2) {}
+		}
+		return vo;
+	}
+	
+	// 조회수 증가
+	public void uiCntUp(int idx) {
+		String sql = "UPDATE UI SET READCNT = READCNT+1 WHERE IDX=?";
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				DBManager.close(conn, pstmt, rs);
+			} catch (Exception e2) {}
+		}
+	}
+	
+	// 글 수정하기
+	public int ui_modify(uiVO vo) {
+		String sql = "UPDATE UI SET SUBJECT=?, CONTENTS=?, FILENAME=? WHERE IDX=?";
+		
+		int row = 0;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getSubject());
+			pstmt.setString(2, vo.getContents());
+			pstmt.setString(3, vo.getFilename());
+			pstmt.setInt(4, vo.getIdx());
+			
+			row = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				DBManager.close(conn, pstmt);
+			} catch (Exception e2) {}
+		}
+		return row;
+	}
+	
+	// 해당 idx에 맞는 게시글 삭제 메소드
+	public int ui_delete(int idx, String pwd) {
+		String sql = "DELETE FROM UI WHERE IDX=? AND PWD=?";
+		
+		int row = 0;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			pstmt.setString(2, pwd);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				DBManager.close(conn, pstmt, rs);
+			} catch (Exception e2) {}
+		}
+		return row;
+	}
+}

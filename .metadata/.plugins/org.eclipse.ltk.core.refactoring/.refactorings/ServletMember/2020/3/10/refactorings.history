@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 3 elements to &apos;modelMember/src/model&apos;&#x0D;&#x0A;- Original project: &apos;ServletMember&apos;&#x0D;&#x0A;- Destination element: &apos;modelMember/src/model&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     model.MemberDAO.java&#x0D;&#x0A;     model.MemberVO.java&#x0D;&#x0A;     model.ZipcodeVO.java" description="Copy compilation units" destination="=modelMember/src&lt;model" element1="/src&lt;model{MemberDAO.java" element2="/src&lt;model{MemberVO.java" element3="/src&lt;model{ZipcodeVO.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1583129058365" units="3" version="1.0"/>
+</session>

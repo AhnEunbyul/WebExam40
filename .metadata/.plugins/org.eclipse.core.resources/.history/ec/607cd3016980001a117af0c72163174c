@@ -1,0 +1,92 @@
+package sample.controller;
+
+import java.io.IOException;
+import java.sql.Connection;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+import sample.model.qa.qaDAO;
+import sample.model.qa.qaVO;
+import sample.util.DBManager;
+
+/**
+ * Servlet implementation class qaController2
+ */
+@WebServlet("/qa2")
+public class qaController2 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public qaController2() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
+		Connection conn = null;
+
+		conn = DBManager.getConnection();
+
+		ServletContext context = request.getSession().getServletContext();
+		String path = context.getRealPath("upload");
+		//String path = "C:/Users/USER/eclipse-workspace/WebExam40/exSample2/WebContent/images";
+		// 슬래시 유무에 따라 파일 저장 장소가 달라짐!"
+		String encType = "UTF-8";
+		int maxSize = 10 * 1024 * 1024; // 최대 사이즈(10메가)
+
+		MultipartRequest multi = new MultipartRequest(request, path, maxSize, encType, new DefaultFileRenamePolicy());
+
+		String name = multi.getParameter("name");
+		String subject = multi.getParameter("subject");
+		String contents = multi.getParameter("contents");
+		String filename = multi.getFilesystemName("filename");
+		String pwd = multi.getParameter("pwd");
+		// 실제 파일 이름만 받는 것
+
+		qaVO vo = new qaVO();
+
+		vo.setName(name);
+		vo.setSubject(subject);
+		vo.setContents(contents);
+		vo.setFilename(filename);
+		vo.setPwd(pwd);
+
+		qaDAO dao = qaDAO.getInstance();
+
+		int row = dao.qa_write(vo);
+
+		request.setAttribute("row", row);
+					
+		RequestDispatcher dispater = 
+				request.getRequestDispatcher("qa/qawrite_pro.jsp");
+		
+		dispater.forward(request, response);
+	}
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		doGet(request, response);
+	}
+
+}

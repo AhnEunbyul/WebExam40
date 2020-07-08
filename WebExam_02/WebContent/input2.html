@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>input2</title>
+<script>
+	function send(){
+		//frm.action="input_pro.jsp";
+		// 이렇게 지정해주면 form 부분에 action을 지정하지 않아도 된다.
+		
+		frm.submit();
+		// 앞에 document가 생략
+		// 두 개가 똑같은 것임
+	}
+</script>
+</head>
+<body>
+<form name = "frm" method="post" action="input_pro.jsp">
+	<table border="1" align = center width=300>
+		<tr>
+			<th colspan = 2>학 생 정 보 입 력</th>
+		</tr>
+		<tr>
+			<th>학 번</th>
+			<td><input type="text" name = "hakbun"></td>
+		</tr>
+		<tr>
+			<th>이 름</th>
+			<td><input type="text" name = "name"></td>
+		</tr>
+		<tr>
+			<th>전 화</th>
+			<td>
+				<input type="text" name = "phone1" size = 4>-
+				<input type="text" name = "phone2" size = 4>-
+				<input type="text" name = "phone3" size = 4>
+			</td>
+		</tr>
+		<tr>
+			<td colspan=2 align = center>
+				<input type="button" value = "전송" onclick="send()")>
+				<input type="button" value = "취소">
+			</td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>

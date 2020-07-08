@@ -1,0 +1,13 @@
+package member.model;
+
+public class MemberVO {
+	private int idx;
+	private String name;
+	private String userid;
+	private String pwd;
+	private String repwd;
+	private String phone;
+	private String email;
+	
+	
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="sun.reflect.ReflectionFactory.GetReflectionFactoryAction"/>
+<fullyQualifiedTypeName name="board.util.DBManager"/>
+<fullyQualifiedTypeName name="javax.servlet.http.Cookie"/>
+<fullyQualifiedTypeName name="board.util.SqlMark"/>
+<fullyQualifiedTypeName name="board.util.PageIndex"/>
+<fullyQualifiedTypeName name="util.DBManager"/>
+<fullyQualifiedTypeName name="model.PdsVO"/>
+<fullyQualifiedTypeName name="model.PdsDAO"/>
+<fullyQualifiedTypeName name="sun.security.provider.SHA2.SHA256"/>
+<fullyQualifiedTypeName name="com.sun.org.apache.xml.internal.security.algorithms.implementations.SignatureDSA.SHA256"/>
+<fullyQualifiedTypeName name="javax.naming.InitialContext"/>
+<fullyQualifiedTypeName name="com.sun.corba.se.spi.orbutil.fsm.Guard.Result"/>
+<fullyQualifiedTypeName name="sun.misc.BASE64Encoder"/>
+<fullyQualifiedTypeName name="model.UserDAO"/>
+<fullyQualifiedTypeName name="util.DBConn"/>
+<fullyQualifiedTypeName name="java.sql.DriverManager"/>
+<fullyQualifiedTypeName name="util.Conn"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="model.prdDAO"/>
+<fullyQualifiedTypeName name="javax.websocket.SendResult"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+<fullyQualifiedTypeName name="javax.naming.Context"/>
+<fullyQualifiedTypeName name="javax.sql.DataSource"/>
+<fullyQualifiedTypeName name="sample.model.guest.GuestDAO"/>
+<fullyQualifiedTypeName name="sample.model.board.BoardDAO"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="KISA.SHA256"/>
+<fullyQualifiedTypeName name="sample.model.member.memberDAO"/>
+<fullyQualifiedTypeName name="com.oreilly.servlet.MultipartRequest"/>
+<fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
+<fullyQualifiedTypeName name="sample.model.port.portDAO"/>
+<fullyQualifiedTypeName name="sample.util.PageIndex"/>
+<fullyQualifiedTypeName name="sample.action.Action"/>
+<fullyQualifiedTypeName name="sample.model.ui.uiDAO"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="sample.util.DBManager"/>
+<fullyQualifiedTypeName name="sample.model.qa.qaDAO"/>
+<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+</qualifiedTypeNameHistroy>

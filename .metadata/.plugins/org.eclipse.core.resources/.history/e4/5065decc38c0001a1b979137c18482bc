@@ -1,0 +1,27 @@
+package member.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import util.DBManager;
+
+public class MemberDAO {
+	
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	private MemberDAO() {}
+	
+	// 회원가입
+	public int insert(MemberVO vo) {
+		String sql = "INSERT INTO MEMBER VALUES(MEMBER_SEQ_IDX.NEXTVAL,?,?,?,?,?,?)";
+		
+		int row = 0;
+		
+		try {
+			conn = DBManager
+		}
+	}
+}

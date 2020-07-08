@@ -1,0 +1,62 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%@ include file="../header.jsp"%>
+
+<div class="contain">
+	<div class="sub-topcontent">
+		<h2 class="sub-view-title">${vo.subject}</h2>
+		<p class="sub-view-wd">${vo.name} | ${vo.regdate.substring(0,10)}</p>
+	</div>
+	<div class="sub-view-contnet">
+		<p>${vo.contents}</p>
+	</div>
+	
+	<div class="sub-view-bottom">
+		<a id="btnAnswer" href="qareply.do" class="btn-modify" style="margin-left: 1em;">답변</a>
+		<a id="btnDelete" href="javascript:void(0)" class="btn-delete" style="margin-left: 1em;" onclick="avent();">삭제</a>
+		<a href="qa.do" class="btn-list">목록</a>
+	</div>
+		
+</div>
+<script>
+
+$(document).ready(function () {
+	var userId = '<%=(String)session.getAttribute("user")%>';
+		
+	if(userId == 'eunbyul35') {
+		$("#btnAnswer").show(); 
+		$("#btnDelete").show(); 
+	} else {
+		$("#btnAnswer").hide(); 
+		$("#btnDelete").hide(); 
+	}
+});
+
+
+function avent(){
+	if(confirm("후회안해? 삭제?") == true) {
+		location.href="qadelete.do";
+	}else {
+		return;
+	}
+}
+</script>
+
+
+<%@ include file="../footer.jsp"%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

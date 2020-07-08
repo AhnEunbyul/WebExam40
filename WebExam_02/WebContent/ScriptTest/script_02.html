@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_02</title>
+<script>
+	function send(){
+		// alert("입력값" + input.name.value);
+		if(input.bun.value==""){
+			alert("번호를 입력하세요");
+			input.bun.focus();
+			return;
+		}
+		if(input.name.value==""){
+			alert("이름을 입력하세요");
+			input.name.focus();
+			return;
+		}
+		input.action="script_02_pro.jsp"
+		input.submit();
+		
+	}
+	function cancle(){
+		alert("정보를 지우고 다시 시작합니다.");
+		
+	}
+</script>
+</head>
+<body>
+	<form name="input" method="post">
+		<table border="1" width="300">
+			<tr>
+				<td>학번</td>
+				<td><input type="text" name="bun"></td>
+			</tr>
+			<tr>	
+				<td>이름</td>
+				<td><input type="text" name="name"></td>
+			</tr>
+			<tr>	
+				<td colspan="2">
+					<input type="button" value="전송" onclick="send()">
+					<input type="button" value="취소" onclick="cancle()">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

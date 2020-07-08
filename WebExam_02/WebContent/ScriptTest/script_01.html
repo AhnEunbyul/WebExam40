@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_01</title>
+<script>
+	// 자바 스크립트는 변수 선언을 크게 안해줘도 상관없다.
+	alert("어서오세요");
+
+	
+	function send(){
+		alert("AAA");
+		document.write("AAA");
+	}
+	function test(a,b){
+		document.write(a + ":" + b);
+	}
+</script>
+</head>
+<body>
+	<a href="javascript:send()">[send]</a>
+	<a href="javascript:test(10,20)">[test]</a>
+	<input type="button" value="전송" onclick="send()">
+</body>
+</html>

@@ -1,0 +1,20 @@
+package sample.controller;
+
+import sample.action.Action;
+import sample.action.ui.uiIndexAction;
+
+public class uiActionFactory {
+	private static uiActionFactory instance =
+			new uiActionFactory();
+	
+	public Action getAction(String command) {
+		Action action = null;
+		System.out.println("ActionFactory : " + command);
+		
+		if(command.equals("ui_index")) {
+			action = new uiIndexAction();
+		}
+	}
+	
+	return action;
+}

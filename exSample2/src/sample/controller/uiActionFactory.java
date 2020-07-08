@@ -1,0 +1,36 @@
+package sample.controller;
+
+import sample.action.Action;
+import sample.action.ui.uiDeleteAction;
+import sample.action.ui.uiIndexAction;
+import sample.action.ui.uiModifyAction;
+import sample.action.ui.uiViewAction;
+import sample.action.ui.uiWriteAction;
+
+public class uiActionFactory {
+	private static uiActionFactory instance =
+			new uiActionFactory();
+	
+	public static uiActionFactory getInstance() { // 자기가 자기 객체 생성
+		return instance;
+	}
+	
+	public Action getAction(String command) {
+		Action action = null;
+		System.out.println("ActionFactory : " + command);
+		
+		if(command.equals("ui_index")) {
+			action = new uiIndexAction();
+		}else if(command.equals("ui_view")) {
+			action = new uiViewAction();
+		}else if(command.equals("ui_write")) {
+			action = new uiWriteAction();
+		}else if(command.equals("ui_modify")) {
+			action = new uiModifyAction();
+		}else if(command.equals("ui_delete")) {
+			action = new uiDeleteAction();
+		}
+		return action;
+	}
+	
+}

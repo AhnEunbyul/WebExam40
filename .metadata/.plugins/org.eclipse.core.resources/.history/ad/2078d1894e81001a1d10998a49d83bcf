@@ -1,0 +1,83 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%@ include file="../header.jsp"%>
+
+<div class="contain">
+	<div class="sub-topcontent">
+		<h2 class="sub-view-title">${vo.subject}</h2>
+		<p class="sub-view-wd">${vo.name} | ${vo.regdate.substring(0,10)}</p>
+	</div>
+	<div class="sub-view-contnet">
+		<p>${vo.contents}</p>
+	</div>
+	
+	<div class="sub-view-bottom">
+		<a id="btnAnswer" href="qareply.do" class="btn-modify">답변</a>&nbsp;&nbsp;
+		<a id="btnDelete" href="javascript:void(0)" class="btn-delete" onclick="avent();">삭제</a>&nbsp;&nbsp;
+		<a href="qa.do" class="btn-list">목록</a>&nbsp;&nbsp;
+	</div>
+		
+</div>
+<script>
+
+$(document).ready(function () {
+	//var userId = loadElement();
+	var userId = '<%=(String)session.getAttribute("user")%>';
+		
+	if(userId == 'eunbyul35') {
+		$("#btnAnswer").show(); 
+		$("#btnDelete").show(); 
+	} else {
+		$("#btnAnswer").hide(); 
+		$("#btnDelete").hide(); 
+	}
+});
+
+
+function avent(){
+	if(confirm("후회안해? 삭제?") == true) {
+		location.href="qadelete.do";
+	}else {
+		return;
+	}
+}
+
+function storageSupport() { 
+	if(!window.localStorage) {
+		return false; 
+	} 
+	return true; 
+}
+
+
+function loadElement() {
+	if(!storageSupport()) {
+		return null; 
+	} 
+	ssionStorage.setItem("uesr", );
+
+	
+	return window.localStorage.getItem('user'); 
+}
+
+
+</script>
+
+
+<%@ include file="../footer.jsp"%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
